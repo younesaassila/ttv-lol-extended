@@ -1,6 +1,6 @@
 # TTV LOL extended
 
-TTV LOL extended enables additional features of [TTV LOL (Younes Aassila's Fork)](https://github.com/younesaassila/ttv-lol).
+TTV LOL extended offers additional features for [TTV LOL (Younes Aassila's Fork)](https://github.com/younesaassila/ttv-lol).
 
 Compatibility: [TTV LOL (Younes Aassila's Fork)](https://github.com/younesaassila/ttv-lol) v1.1.0 and later
 
