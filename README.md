@@ -12,8 +12,7 @@ Features:
 
 1. Download the latest build for your OS in the "Releases" section
 1. Open TTV LOL's options page
-1. Under "Developer options", set "Server" to "Local"
-1. Enter `http://localhost:38565` in the local server input field
+1. Under "Developer options", set "Server" to "Local", and set the local server address input field to `http://localhost:38565`
 
 ## Usage
 
