@@ -1,7 +1,7 @@
 {
   "name": "ttv-lol-extended",
   "version": "1.0.0",
-  "description": "TTV LOL extended enables additional features of TTV LOL (Younes Aassila's Fork)",
+  "description": "TTV LOL extended offers additional features for TTV LOL (Younes Aassila's Fork)",
   "main": "dist/index.js",
   "bin": "dist/index.js",
   "scripts": {
