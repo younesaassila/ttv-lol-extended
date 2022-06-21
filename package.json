@@ -1,0 +1,44 @@
+{
+  "name": "ttv-lol-extended",
+  "version": "1.0.0",
+  "description": "TTV LOL extended enables additional features of TTV LOL (Younes Aassila's Fork)",
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon",
+    "lint": "prettier --write ./src",
+    "build": "tsc && pkg -t linux,macos,win . --out-path dist --compress GZip"
+  },
+  "keywords": [
+    "nodejs",
+    "twitch",
+    "adblocker"
+  ],
+  "author": "Younes Aassila",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "helmet": "^5.1.0",
+    "ip": "^1.1.8",
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/ip": "^1.1.0",
+    "@types/morgan": "^1.9.3",
+    "@types/node-fetch": "^2.6.2",
+    "nodemon": "^2.0.16",
+    "pkg": "^5.7.0",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.4"
+  },
+  "private": true
+}
