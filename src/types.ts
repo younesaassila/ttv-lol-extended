@@ -1,9 +1,15 @@
+export const enum BroadcastType {
+  Archive = "archive",
+  Highlight = "highlight",
+  Upload = "upload",
+}
+
 export interface Video {
   title: string
   description?: any
   description_html?: any
   broadcast_id: number
-  broadcast_type: string
+  broadcast_type: BroadcastType
   status: string
   tag_list: string
   views: number
@@ -75,8 +81,8 @@ interface Channel {
 }
 
 export interface Quality {
-  name: string // 1080p60, 720p60, ...
-  video: string // chunked, 720p, ...
-  resolution: string // 1920x1080, 1280x720, ...
-  frameRate: string // 60.000, 30.000, ...
+  streamName: string // "chunked", "720p60", "720p30"
+  resolution: string // "1920x1080", "1280x720", "1280x720"
+  frameRate: string // "60.000", "60.000", "30.000"
+  label: string // "1080p60", "720p60", "720p"
 }
