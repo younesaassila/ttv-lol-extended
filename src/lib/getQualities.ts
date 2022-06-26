@@ -6,7 +6,7 @@ export default function getQualities(
 ) {
   const qualities: Quality[] = []
 
-  let highestFrameRate = Math.max(...Object.values(fps))
+  let highestFrameRate = 0
   const getFrameRate = (streamName: string) => {
     let frameRate = fps[streamName]
     if (!frameRate) {
@@ -15,8 +15,7 @@ export default function getQualities(
       if (match != null && match[1] != null) frameRate = parseInt(match[1])
     }
     if (frameRate != null && frameRate > highestFrameRate) {
-      // Retrieved frame rate is greater than all specified frame rates by the Twitch API.
-      // This is because the Twitch API sometimes assigns a frame rate of 0 to a stream name.
+      // Update the highest frame rate value.
       highestFrameRate = frameRate
     }
     if (!frameRate) {
