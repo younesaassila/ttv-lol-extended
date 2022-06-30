@@ -1,6 +1,6 @@
 import fetch from "node-fetch"
 import getQualities from "./getQualities"
-import { Video } from "../types"
+import { Video, BroadcastType } from "../types"
 
 export default async function fetchSubOnlyVod(vodId: string) {
   const video: Video = await fetch(
@@ -22,7 +22,7 @@ export default async function fetchSubOnlyVod(vodId: string) {
     })
 
   if (!video) throw new Error(`'${Object.keys({ video })[0]}' is not defined.`)
-  if (video.broadcast_type === "upload") {
+  if (video.broadcast_type === BroadcastType.Upload) {
     throw new Error("Uploads are not supported.")
   }
 
@@ -45,11 +45,19 @@ export default async function fetchSubOnlyVod(vodId: string) {
   let manifest = "#EXTM3U\n"
   const qualities = getQualities(video.resolutions, video.fps)
 
+  let filename: string
+  if (video.broadcast_type === BroadcastType.Highlight) {
+    filename = `highlight-${vodId}.m3u8`
+  } else {
+    filename = "index-dvr.m3u8"
+  }
+
   for (const quality of qualities) {
+    // TODO: Set accurate codecs.
     manifest +=
-      `#EXT-X-MEDIA:TYPE=VIDEO,GROUP-ID="${quality.video}",NAME="${quality.name}",AUTOSELECT=YES,DEFAULT=YES\n` +
-      `#EXT-X-STREAM-INF:CODECS="avc1.64002A,mp4a.40.2",RESOLUTION=${quality.resolution},VIDEO="${quality.video}",FRAME-RATE=${quality.frameRate}\n` +
-      `https://${subdomain}.cloudfront.net/${token}/${quality.video}/index-dvr.m3u8\n`
+      `#EXT-X-MEDIA:TYPE=VIDEO,GROUP-ID="${quality.streamName}",NAME="${quality.label}",AUTOSELECT=YES,DEFAULT=YES\n` +
+      `#EXT-X-STREAM-INF:CODECS="avc1.64002A,mp4a.40.2",RESOLUTION=${quality.resolution},VIDEO="${quality.streamName}",FRAME-RATE=${quality.frameRate}\n` +
+      `https://${subdomain}.cloudfront.net/${token}/${quality.streamName}/${filename}\n`
   }
 
   return manifest

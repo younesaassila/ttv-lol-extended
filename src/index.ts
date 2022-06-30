@@ -62,6 +62,7 @@ app.get("/vod/:m3u8_filename", async (req, res) => {
   }
 
   const body = await response.text()
+  res.contentType("application/vnd.apple.mpegurl")
   return res.status(response.status).send(body)
 })
 
